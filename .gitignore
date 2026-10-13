@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.pyc
+venv/
+.venv/
+
+# IDEs / notebooks
+.idea/
+.vscode/
+.ipynb_checkpoints/
+
+# Dataset original de OWID (se descarga aparte, ~100 MB) y salida sin comprimir
+owid-covid-data.csv
+owid-covid-data.xlsx
+owid-covid-data-preprocesado.csv

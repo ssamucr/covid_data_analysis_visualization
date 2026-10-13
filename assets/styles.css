@@ -1,0 +1,73 @@
+body {
+    background-color: #0e1012;
+    color: rgb(160, 170, 186);
+    font-size: 1rem;
+    padding: 1rem;
+}
+
+.title {
+    text-align: center;
+    color: #fff;
+    font-size: 2rem;
+    background-color: rgb(48, 48, 48);
+    border-radius: 0.5rem;
+    padding: 1rem;
+}
+
+.container-fecha {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5px;
+}
+
+.columna-global {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    justify-content: space-between;
+    align-items: start;
+    border-radius: 0.5rem;
+    padding: 1rem;
+}
+
+.container-global {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 2rem;
+    padding: 1rem;
+}
+
+.container-localizacion {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    border: 2px solid rgb(160, 170, 186);
+    padding: 1rem;
+    border-radius: 0.5rem;
+}
+
+#location-info {
+    font-weight: 700;
+}
+
+#global-vaccinations, #new-global-vaccinations, #location-vaccinations {
+    color: #93F9B9;
+    font-weight: 700;
+}
+
+#global-deaths, #new-global-deaths, #location-deaths {
+    color: #EB3349;
+    font-weight: 700;
+}
+
+#global-cases, #new-global-cases, #location-cases {
+    color: #F09819;
+    font-weight: 700;
+}
+
+#cases-date-graph {
+    background-color: #0e1012;
+}
+
