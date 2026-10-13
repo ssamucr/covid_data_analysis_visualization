@@ -1,3 +1,13 @@
+---
+title: COVID-19 Dashboard
+emoji: 🦠
+colorFrom: indigo
+colorTo: purple
+sdk: docker
+app_port: 7860
+pinned: false
+---
+
 # Visualización de la propagación del COVID-19
 
 Proyecto final del curso **Gestión y Análisis de Datos e Información** (Universidad Tecnológica de Panamá).
@@ -21,6 +31,11 @@ python main.py
 ```
 
 Abre <http://127.0.0.1:8050>.
+
+## Despliegue
+
+La app se publica en Hugging Face Spaces con el `Dockerfile` incluido (gunicorn en el puerto 7860).
+El bloque YAML al inicio de este README es la configuración del Space.
 
 ## Contenido del repositorio
 

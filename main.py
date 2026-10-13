@@ -6,6 +6,7 @@ import plotly.express as px
 df = pd.read_csv('./owid-covid-data-preprocesado.csv.gz')
 
 app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
+server = app.server  # para servidores WSGI (gunicorn main:server)
 
 cases_stringency_scatter = px.scatter(df,
                                           x='stringency_index',
