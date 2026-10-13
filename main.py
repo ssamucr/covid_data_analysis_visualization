@@ -14,6 +14,12 @@ COLUMNS = [
 ]
 df = pd.read_csv('./owid-covid-data-preprocesado.csv.gz', usecols=COLUMNS)
 
+# Fecha inicial: la última con datos de casi todos los países (los últimos días del dataset están
+# incompletos y mostrarían totales muy bajos).
+_countries_per_date = df[~df['iso_code'].astype(str).str.startswith('OWID_')].groupby('date')['location'].nunique()
+DEFAULT_DATE = _countries_per_date[_countries_per_date >= 0.9 * _countries_per_date.max()].index.max()
+DEFAULT_LOCATION = 'Panama'
+
 app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 server = app.server  # para servidores WSGI (gunicorn main:server)
 
@@ -40,7 +46,7 @@ app.layout = dbc.Container([
             html.Label('Fecha: ', className='label-fecha'),
             dcc.DatePickerSingle(
                 id='date-picker',
-                date=df['date'].min(),
+                date=DEFAULT_DATE,
                 display_format='YYYY-MM-DD'
             ),
         ], width=2, className='container-fecha'),
@@ -71,7 +77,7 @@ app.layout = dbc.Container([
             dcc.Dropdown(
                 id='location-dropdown',
                 options=[{'label': loc, 'value': loc} for loc in df['location'].unique()],
-                value='Afghanistan'
+                value=DEFAULT_LOCATION
             ),
             html.Div(id='location-info', children="No hay datos para visualizar"),
             html.Div(id='location-cases', children="No hay datos para visualizar"),
@@ -111,7 +117,7 @@ app.layout = dbc.Container([
                 id='country-color-dropdown',
                 options=[{'label': loc, 'value': loc} for loc in df['location'].unique()],
                 multi=True,
-                value=['Afghanistan']
+                value=[DEFAULT_LOCATION]
             ),
             dcc.Graph(id='vaccinated-deaths-scatter'),
         ], width=7),
