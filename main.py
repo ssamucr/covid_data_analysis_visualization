@@ -134,7 +134,9 @@ app.layout = dbc.Container([
      Input('country-color-dropdown', 'value')]
 )
 def update_dashboard(date, location, selected_countries):
-    global_data = df[df['date'] == date]
+    # Las filas agregadas de OWID (World, continentes, grupos de ingreso) se excluyen
+    # de los totales globales para no contar los mismos casos varias veces.
+    global_data = df[(df['date'] == date) & ~df['iso_code'].astype(str).str.startswith('OWID_')]
     general_data = df
     location_data = df[(df['date'] == date) & (df['location'] == location)]
 
