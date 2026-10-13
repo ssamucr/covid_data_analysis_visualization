@@ -3,7 +3,16 @@ from dash import Dash, dcc, html, Input, Output
 import dash_bootstrap_components as dbc
 import plotly.express as px
 
-df = pd.read_csv('./owid-covid-data-preprocesado.csv.gz')
+# Solo las columnas que usa el dashboard: el dataset completo tiene 42 y ocupa ~250 MB en memoria
+COLUMNS = [
+    'iso_code', 'location', 'date',
+    'total_cases', 'total_deaths', 'people_vaccinated',
+    'new_cases_smoothed', 'new_deaths_smoothed', 'new_people_vaccinated_smoothed',
+    'total_cases_per_million', 'new_cases_per_million',
+    'total_deaths_per_million', 'new_deaths_per_million',
+    'people_vaccinated_per_hundred', 'stringency_index',
+]
+df = pd.read_csv('./owid-covid-data-preprocesado.csv.gz', usecols=COLUMNS)
 
 app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 server = app.server  # para servidores WSGI (gunicorn main:server)
