@@ -14,6 +14,8 @@ Proyecto final del curso **Gestión y Análisis de Datos e Información** (Unive
 Dashboard interactivo hecho con **Dash + Plotly** sobre el dataset de COVID-19 de
 [Our World in Data](https://github.com/owid/covid-19-data) (datos hasta junio de 2024).
 
+**Demo:** <https://covid-dashboard-6ejn.onrender.com> (en el plan gratuito de Render la primera carga puede tardar hasta un minuto).
+
 ## Qué muestra
 
 - Totales globales (casos, muertes y vacunaciones) y nuevos casos a la fecha elegida.
